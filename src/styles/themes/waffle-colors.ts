@@ -1,0 +1,16 @@
+export const waffleColors = {
+    'rosa': '#F36DC1',
+    'rosa-escuro': '#D150AE',
+    'rosa-claro': '#FDEDF8',
+    'amarelo-claro': '#F8D43A',
+    'amarelo': '#FFCE04',
+    'preto': '#000000',
+    'marrom': '#240E0B',
+    'cinza-100': '#f5f5f9',
+    'cinza-200': '#e8e9ef',
+    'cinza-300': '#e2e3eb',
+    'cinza-500': '#ecedf4',
+    'cinza-600': '#dbdbe7',
+    'cinza-900': '#615A5A',
+    'branco': '#FFFFFF',
+  }
