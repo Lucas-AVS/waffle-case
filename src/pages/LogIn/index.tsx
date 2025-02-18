@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Container, Icon, FlexBox, Title, Paragraph, Link, Form, InputContainer, InputIcon, Input, InputNoIcon, FloatingLabel, FloatingLabelNoIcon, Button, FlexRow, LoginDiv, AdminDashBoard } from './style';
+import { Container, Icon, FlexBox, LoginDiv, AdminDashBoard, Title, Paragraph, Link, InputContainer, InputIcon, Input, InputNoIcon, FloatingLabel, FloatingLabelNoIcon, Button, FlexRow, TimeInfo, LoginForm, AdminForm } from './style';
 import { CiMail as MailIcon } from "react-icons/ci";
 import { MdOutlineLockOpen as LockIcon } from "react-icons/md";
+import { FaRegClock as ClockIcon} from "react-icons/fa6";
 
 const LogIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginEmail, setLoginEmail] = useState('');
+  const [adminUsername, setAdminUsername] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,11 +20,10 @@ const LogIn = () => {
       <Icon src="/src/assets/the-news-logo.webp" alt="The News" />
       <FlexBox>
         <LoginDiv>
-          <span>sempre às 06:06 manhã</span>
+          <TimeInfo> <ClockIcon />sempre às 06:06 manhã</TimeInfo>
           <Title>acompanhe suas estatísticas e streak do The News!</Title>
           <Paragraph>digite seu email cadastrado:</Paragraph>
-          <Link href="https://thenews.waffle.com.br/" target="_blank">não é cadastrado?</Link>
-          <Form onSubmit={handleLogin}>
+          <LoginForm onSubmit={handleLogin}>
             <InputContainer>
               <InputIcon>
                 <MailIcon />
@@ -30,43 +31,44 @@ const LogIn = () => {
               <Input
                 type="email"
                 placeholder=" "
-                value={email}
+                value={loginEmail}
                 required
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setLoginEmail(e.target.value)}
               />
               <FloatingLabel>seu email cadastrado</FloatingLabel>
             </InputContainer>
             <Button type="submit">Login</Button>
-          </Form>
+          </LoginForm>
+          <Link href="https://thenews.waffle.com.br/" target="_blank">não é cadastrado?</Link>
         </LoginDiv>
         <AdminDashBoard>
           <FlexRow>
             <LockIcon />
-            <Title>Dashboard Administrativo</Title>
+            <h2>Dashboard Administrativo</h2>
           </FlexRow>
-          <Form onSubmit={handleLogin}>
+          <AdminForm onSubmit={handleLogin}>
             <InputContainer>
               <InputNoIcon
                 type="text"
                 placeholder=" "
-                value={email}
+                value={adminUsername}
                 required
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setAdminUsername(e.target.value)}
               />
-              <FloatingLabelNoIcon>usuário</FloatingLabelNoIcon>
+              <FloatingLabelNoIcon>Nome de usuário</FloatingLabelNoIcon>
             </InputContainer>
             <InputContainer>
               <InputNoIcon
                 type="password"
                 placeholder=" "
-                value={password}
+                value={adminPassword}
                 required
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setAdminPassword(e.target.value)}
               />
-              <FloatingLabelNoIcon>senha</FloatingLabelNoIcon>
+              <FloatingLabelNoIcon>Sua senha</FloatingLabelNoIcon>
             </InputContainer>
             <Button type="submit">Login</Button>
-          </Form>
+          </AdminForm>
         </AdminDashBoard>
       </FlexBox>
     </Container>
