@@ -1,56 +1,104 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  padding: 40px 70px 24px 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding: 2rem;
+  background-color: ${(props) => props.theme['cinza-100']};
+
+  @media (max-width: 560px) {
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+    }
+    body, input, textarea, button {
+      font-size: 1rem;
+    }
+    padding: 10px 5px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 77vh;
+    margin-bottom: 23vh;
+    border-bottom: 1px solid ${(props) => props.theme['cinza-600']};
+    padding: 10px 25px;
+  }
 `;
+
+export const TimeInfo = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  :first-child {
+    color: ${(props) => props.theme['amarelo']};
+  }
+`;
+
+
 
 export const Icon = styled.img`
   margin-bottom: 2rem;
-  width: 12rem;
+  width: 14rem;
   height: auto;
 `;
 
 export const FlexBox = styled.div`
+  padding-top: 10px;
+  min-width: 40%;
+  max-width: 80%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  width: 100%;
-  max-width: 1200px;
+  align-items: flex-start;
+  gap: 20px;
 
   @media (min-width: 1025px) {
     flex-direction: row;
+    gap: 120px;
   }
 `;
 
 export const LoginDiv = styled.div`
-  padding: 2rem;
+  padding: 24px 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  gap: 24px;
 `;
 
 export const AdminDashBoard = styled.div`
   background-color: ${(props) => props.theme['cinza-500']};
   border: 1px solid ${(props) => props.theme['cinza-600']};
   border-radius: 6px;
-  padding: 2rem;
+  margin: 0 auto;
+  padding: 1rem;
+  min-width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+
+  @media (min-width: 1025px) {
+    min-width: 30%;
+    max-width: 30%;
+    padding: 2rem;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 3.25rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  text-align: center;
+  width: 100%;
+  text-align: flex-start;
+  @media (min-width: 1025px) {
+    text-align: flex-start;
+  }
 `;
 
 export const Paragraph = styled.p`
@@ -66,7 +114,18 @@ export const Link = styled.a`
   text-align: center;
 `;
 
-export const Form = styled.form`
+export const LoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+
+  @media (min-width: 1025px) {
+    width: 70%;
+  }
+`;
+
+export const AdminForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -75,7 +134,6 @@ export const Form = styled.form`
 
 export const InputContainer = styled.div`
   position: relative;
-  width: 100%;
 `;
 
 export const InputIcon = styled.div`
@@ -152,11 +210,17 @@ export const Button = styled.button`
 
 export const FlexRow = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   margin-bottom: 1rem;
+
+  :first-child {
+    color: ${(props) => props.theme['amarelo']};
+    font-size: 2.5rem;
+  }
 
   @media (min-width: 1025px) {
     flex-direction: column;
   }
+  
 `;
