@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     };
 
     body {
-        background-color: ${(props) => props.theme['cinza-100']};
+        background-color: ${(props) => props.theme['branco']};
         color: ${(props) => props.theme['preto']};
 
     };
@@ -20,5 +20,27 @@ export const GlobalStyle = createGlobalStyle`
     body, input, textarea, button { 
         font-family: var(--font-sans);
 	    font-weight: 400; 
-        font-size: 1rem; }
+        font-size: 1.25rem; }
+
+    h1 {
+        font-size: 3.25rem;
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: 1.75;
+        font-weight: 700;
+    }
+
+    @media (max-width: 560px) {
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.25rem;
+        }
+        body, input, textarea, button {
+            font-size: 1rem;
+        }
+  }
 `
