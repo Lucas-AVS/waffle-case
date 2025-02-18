@@ -2,8 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-    --font-sans: '__Mulish_1ed915', '__Mulish_Fallback_1ed915';
-    --font-content: '__Montserrat_4bc053', '__Montserrat_Fallback_4bc053';
+        --font-sans: 'Mulish', sans-serif;
     }
 
     *{
