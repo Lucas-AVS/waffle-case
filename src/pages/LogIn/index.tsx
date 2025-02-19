@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
+import { supabase } from '../../services/supabaseClient';
 import { Container, Icon, FlexBox, LoginDiv, AdminDashBoard, Title, Paragraph, Link, InputContainer, InputIcon, Input, InputNoIcon, FloatingLabel, FloatingLabelNoIcon, Button, FlexRow, TimeInfo, LoginForm, AdminForm } from './style';
 import { CiMail as MailIcon } from "react-icons/ci";
 import { MdOutlineLockOpen as LockIcon } from "react-icons/md";
 import { FaRegClock as ClockIcon} from "react-icons/fa6";
 
-const LogIn = () => {
-  const [loginEmail, setLoginEmail] = useState('');
-  const [adminUsername, setAdminUsername] = useState('');
-  const [adminPassword, setAdminPassword] = useState('');
 
-  const handleLogin = (e: React.FormEvent) => {
+const LogIn = () => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Your login logic here
-    alert("Logged In!");
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      alert(error.message);
+      setEmail("");
+      setPassword("");
+    } else {
+      alert("Login success");
+      window.location.href = "/";
+    }
   };
+
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [loginEmail, setLoginEmail] = useState('');
+
 
   return (
     <Container>
@@ -51,9 +66,9 @@ const LogIn = () => {
               <InputNoIcon
                 type="text"
                 placeholder=" "
-                value={adminUsername}
+                value={email}
                 required
-                onChange={(e) => setAdminUsername(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <FloatingLabelNoIcon>Nome de usuário</FloatingLabelNoIcon>
             </InputContainer>
@@ -61,9 +76,9 @@ const LogIn = () => {
               <InputNoIcon
                 type="password"
                 placeholder=" "
-                value={adminPassword}
+                value={password}
                 required
-                onChange={(e) => setAdminPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <FloatingLabelNoIcon>Sua senha</FloatingLabelNoIcon>
             </InputContainer>
