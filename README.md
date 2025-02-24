@@ -40,9 +40,7 @@ Os usuários podem fazer login utilizando seu e-mail cadastrado. O login verific
 2. Instale as dependências:
 
    npm install
-
-   # ou
-
+   ou
    yarn install
 
 3. Configure as variáveis de ambiente:
@@ -55,5 +53,5 @@ Os usuários podem fazer login utilizando seu e-mail cadastrado. O login verific
 Para iniciar a aplicação em modo de desenvolvimento, execute:
 
     npm run dev
-    # ou
+    ou
     yarn dev
