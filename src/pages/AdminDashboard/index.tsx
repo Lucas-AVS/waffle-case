@@ -1,4 +1,3 @@
-import React from 'react';
 import useAdminData from "../../services/useAdminData";
 import {
   DashboardContainer,

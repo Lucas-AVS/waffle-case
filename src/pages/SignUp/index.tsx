@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container, FormWrapper, Title, Form, Label, Input, Button } from './style';
 
 const SignUp = () => {

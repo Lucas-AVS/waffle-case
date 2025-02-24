@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { supabase } from '../../services/supabaseClient';
 import { Container, Icon, FlexBox, LoginDiv, AdminDashBoard, Title, Paragraph, Link, InputContainer, InputIcon, Input, InputNoIcon, FloatingLabel, FloatingLabelNoIcon, Button, FlexRow, TimeInfo, LoginForm, AdminForm } from './style';
 import { CiMail as MailIcon } from "react-icons/ci";
