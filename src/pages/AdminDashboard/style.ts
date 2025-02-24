@@ -12,6 +12,13 @@ export const DashboardContainer = styled.div`
   @media (max-width: 768px) {
     padding: 1rem 0.5rem;
   }
+
+  @media (min-width: 1200px) {
+    height: 77vh;
+    margin-bottom: 23vh;
+    border-bottom: 1px solid ${(props) => props.theme['cinza-600']};
+    padding: 10px 25px;
+  }
 `;
 
 export const DashboardHeader = styled.div`
@@ -45,11 +52,46 @@ export const DashboardContent = styled.div`
   width: 100%;
 `;
 
+export const MainInfoContainer = styled.div`
+  width: 100%;
+`;
+
+export const OtherInfoContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const DashboardFlexBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  gap: 1rem;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+export const MainInfoCard = styled.div`
+  background-color: ${(props) => props.theme['branco']};
+  width: 100%;
+  padding: 3rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 4px solid ${(props) => props.theme['amarelo']};
+  color: ${(props) => props.theme['cinza-900']};
+  font-size: 1.2rem;
+`;
+
 export const InfoCard = styled.div`
   background-color: ${(props) => props.theme['branco']};
-  width: fit-content;
+  width: 100%;
   padding: 1.5rem;
   border-radius: 0.5rem;
+  border: 1px solid ${(props) => props.theme['cinza-200']};
   border-left: 4px solid ${(props) => props.theme['amarelo']};
   color: ${(props) => props.theme['cinza-900']};
   font-size: 1.2rem;
