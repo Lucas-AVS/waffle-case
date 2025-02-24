@@ -4,36 +4,29 @@ type User = {
   type: 'admin' | 'user';
 };
 
-const AuthContext = createContext<User | null>(null);
-
-type AuthProviderProps = PropsWithChildren & {
-  isSignedIn?: boolean;
-  isAdmin?: boolean;
+type AuthContextType = {
+  user: User | null;
+  setUser: (user: User | null) => void;
 };
 
-export default function AuthProvider({
-  children,
-  isSignedIn,
-  isAdmin,
-}: AuthProviderProps) {
-  // Uses `isSignedIn` prop to determine whether or not to render a user
-  const [user] = useState<User | null>(() => {
-    if (isSignedIn && isAdmin) {
-      return { type: 'admin' };
-    } else if (isSignedIn && !isAdmin) {
-      return { type: 'user' };
-    } else {
-      return null;
-    }
-  });
+const AuthContext = createContext<AuthContextType | null>(null);
 
-  return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
+type AuthProviderProps = PropsWithChildren<{ initialUser?: User | null }>;
+
+export default function AuthProvider({ children, initialUser }: AuthProviderProps) {
+  const [user, setUser] = useState<User | null>(initialUser ?? null);
+
+  return (
+    <AuthContext.Provider value={{ user, setUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
 
-  if (context === undefined) {
+  if (context === null) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
 
