@@ -10,8 +10,8 @@ export const DashboardContainer = styled.div`
   padding: 2rem;
 
   @media (max-width: 768px) {
-        padding: 1rem 0.5rem;
-    }
+    padding: 1rem 0.5rem;
+  }
 `;
 
 export const DashboardHeader = styled.div`
@@ -25,11 +25,11 @@ export const DashboardHeader = styled.div`
   background-color: ${(props) => props.theme['branco']};
   border-bottom: 4px solid ${(props) => props.theme['amarelo']};
 
-    @media (max-width: 768px) {
-            flex-direction: column;
-            padding: 1 0.7rem;
-            gap: 1rem;
-        }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1 0.7rem;
+    gap: 1rem;
+  }
 `;
 
 export const DashboardTitle = styled.h1`
@@ -46,12 +46,12 @@ export const DashboardContent = styled.div`
 `;
 
 export const InfoCard = styled.div`
-  background-color: ${(props) => props.theme['cinza-900']};
+  background-color: ${(props) => props.theme['branco']};
   width: fit-content;
   padding: 1.5rem;
   border-radius: 0.5rem;
   border-left: 4px solid ${(props) => props.theme['amarelo']};
-  color: ${(props) => props.theme['branco']};
+  color: ${(props) => props.theme['cinza-900']};
   font-size: 1.2rem;
 `;
 
