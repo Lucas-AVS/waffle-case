@@ -1,3 +1,3 @@
 # React + TypeScript + Vite
 
-libs: react icons +
+libs: react icons + supabase-js
