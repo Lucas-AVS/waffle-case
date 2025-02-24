@@ -1,8 +1,28 @@
 # Waffle Case: Streak the News
 
+🔗 **Acesse o projeto online:** [Waffle Case](https://waffle-case.vercel.app/)
+
+🖼️ **Pré-visualização:**  
+![Imagem do projeto](./src/assets/img-preview.png)
+
+## 🔑 Logins de Teste
+
+- **Usuários:**
+
+  - ✉️ `teste@email.com`
+  - ✉️ `boo@email.com`
+
+- **Administrador:**
+  - ✉️ `admin@admin.com`
+  - 🔑 Senha: `admin`
+
+---
+
 ## 📌 Descrição
 
 **Waffle Case** é uma aplicação web desenvolvida com **React**, **TypeScript** e **Vite**. A aplicação permite que os usuários acompanhem suas estatísticas e streaks de leitura de posts, além de fornecer um **dashboard administrativo** para visualizar dados agregados.
+
+---
 
 ## 🚀 Funcionalidades
 
