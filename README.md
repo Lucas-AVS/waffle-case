@@ -2,10 +2,10 @@
 
 🔗 **Acesse o projeto online:** [Waffle Case](https://waffle-case.vercel.app/)
 
-🖼️ **Pré-visualização:**  
+**Pré-visualização:**  
 ![Imagem do projeto](./src/assets/img-preview.png)
 
-## 🔑 Logins de Teste
+## Logins de Teste
 
 - **Usuários:**
 
@@ -18,24 +18,24 @@
 
 ---
 
-## 📌 Descrição
+## Descrição
 
 **Waffle Case** é uma aplicação web desenvolvida com **React**, **TypeScript** e **Vite**. A aplicação permite que os usuários acompanhem suas estatísticas e streaks de leitura de posts, além de fornecer um **dashboard administrativo** para visualizar dados agregados.
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-### 🔑 Login de Usuário
+### Login de Usuário
 
 Os usuários podem fazer login utilizando seu e-mail cadastrado. O login verifica se o usuário existe no banco de dados e, se existir, redireciona para o **dashboard do usuário**.
 
-### 📊 Dashboard do Usuário
+### Dashboard do Usuário
 
 - Exibe informações sobre o **streak de leitura**, o último post aberto e os posts acessados na semana atual.
 - Mostra informações sobre as **fontes UTM** dos posts.
 
-### 📈 Dashboard Administrativo
+### Dashboard Administrativo
 
 - Exibe os **top 3 usuários** com maior streak.
 - Mostra os **top 3 posts** mais acessados.
@@ -43,14 +43,14 @@ Os usuários podem fazer login utilizando seu e-mail cadastrado. O login verific
 
 ---
 
-## ⚙️ Configuração
+## Configuração
 
-### 📌 Pré-requisitos
+### Pré-requisitos
 
 - **Node.js**
 - **npm** ou **yarn**
 
-### 📥 Instalação
+### Instalação
 
 1. Clone o repositório:
 
