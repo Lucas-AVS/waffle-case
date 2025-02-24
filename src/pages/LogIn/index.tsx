@@ -3,32 +3,66 @@ import { supabase } from '../../services/supabaseClient';
 import { Container, Icon, FlexBox, LoginDiv, AdminDashBoard, Title, Paragraph, Link, InputContainer, InputIcon, Input, InputNoIcon, FloatingLabel, FloatingLabelNoIcon, Button, FlexRow, TimeInfo, LoginForm, AdminForm } from './style';
 import { CiMail as MailIcon } from "react-icons/ci";
 import { MdOutlineLockOpen as LockIcon } from "react-icons/md";
-import { FaRegClock as ClockIcon} from "react-icons/fa6";
-
+import { FaRegClock as ClockIcon } from "react-icons/fa6";
+import { useAuth } from '../../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
-  const handleLogin = async (e: React.FormEvent) => {
+  const { setUser } = useAuth();
+  const navigate = useNavigate();
+  
+  const handleUserLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Verifica se o usuário existe
+    const { data, error } = await supabase
+      .from('users')
+      .select('email')
+      .eq('email', loginEmail)
+      .single();
+
+    if (error || !data) {
+      alert("Usuário não encontrado");
+      setLoginEmail("");
+      return;
+    }
+
+    // Se o usuário existir, busca os dados do usuário
+    const { error: userError } = await supabase
+      .rpc('get_user_data', { user_email: loginEmail });
+
+    if (userError) {
+      alert(userError.message);
+      setLoginEmail("");
+    } else {
+      alert("Login success");
+      setUser({ type: 'user' });
+      navigate(`/user/${loginEmail}`, { replace: true });
+    }
+  };
+
+  const handleAdminLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+  
     const { error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
     });
-
+  
     if (error) {
       alert(error.message);
       setEmail("");
       setPassword("");
     } else {
       alert("Login success");
-      window.location.href = "/";
+      setUser({ type: 'admin' });
+      navigate('/admin', { replace: true });
     }
   };
 
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const [loginEmail, setLoginEmail] = useState('');
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState('');
 
   return (
     <Container>
@@ -38,7 +72,7 @@ const [loginEmail, setLoginEmail] = useState('');
           <TimeInfo> <ClockIcon />sempre às 06:06 manhã</TimeInfo>
           <Title>acompanhe suas estatísticas e streak do The News!</Title>
           <Paragraph>digite seu email cadastrado:</Paragraph>
-          <LoginForm onSubmit={handleLogin}>
+          <LoginForm onSubmit={handleUserLogin}>
             <InputContainer>
               <InputIcon>
                 <MailIcon />
@@ -54,14 +88,14 @@ const [loginEmail, setLoginEmail] = useState('');
             </InputContainer>
             <Button type="submit">Login</Button>
           </LoginForm>
-          <Link href="https://thenews.waffle.com.br/" target="_blank">não é cadastrado?</Link>
+          <Link href="https://thenews.waffle.com.br/#inscreva-se" target="_blank">não é cadastrado?</Link>
         </LoginDiv>
         <AdminDashBoard>
           <FlexRow>
             <LockIcon />
             <h2>Dashboard Administrativo</h2>
           </FlexRow>
-          <AdminForm onSubmit={handleLogin}>
+          <AdminForm onSubmit={handleAdminLogin}>
             <InputContainer>
               <InputNoIcon
                 type="text"
