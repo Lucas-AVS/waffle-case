@@ -31,8 +31,6 @@ const useUserData = (email: string) => {
 
         if (error) throw error;
 
-        console.log("Data returned from get_user_data:", data);
-
         if (data && data.length > 0) {
           const userData: UserData = {
             email: data[0].email,

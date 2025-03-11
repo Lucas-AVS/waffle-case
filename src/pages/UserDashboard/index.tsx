@@ -69,7 +69,6 @@ const UserDashboard = () => {
   };
 
   const weekPosts = data ? getWeekPosts(data.posts) : [];
-  console.log(data)
 
   return (
     <DashboardContainer>
