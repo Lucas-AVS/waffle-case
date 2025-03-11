@@ -1,4 +1,4 @@
-import useAdminData from "../../services/useAdminData";
+import useAdminData from "../../services/hooks/useAdminData";
 import {
   DashboardContainer,
   DashboardHeader,

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import useUserData from '../../services/useUserData';
+import useUserData from '../../services/hooks/useUserData';
 import {
   DashboardContainer,
   DashboardHeader,
