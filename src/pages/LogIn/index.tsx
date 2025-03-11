@@ -29,7 +29,7 @@ const LogIn = () => {
 
     // Se o usuário existir, busca os dados do usuário
     const { error: userError } = await supabase
-      .rpc('get_user_data', { user_email: loginEmail });
+      .rpc('get_user_data', { p_user_email: loginEmail });
 
     if (userError) {
       alert(userError.message);
