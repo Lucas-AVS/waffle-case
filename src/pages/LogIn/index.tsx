@@ -6,6 +6,7 @@ import { MdOutlineLockOpen as LockIcon } from "react-icons/md";
 import { FaRegClock as ClockIcon } from "react-icons/fa6";
 import { useAuth } from '../../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import theNewsLogo from '../../assets/the-news-logo.webp'
 
 const LogIn = () => {
   const { setUser } = useAuth();
@@ -66,7 +67,7 @@ const LogIn = () => {
 
   return (
     <Container>
-      <Icon src="/src/assets/the-news-logo.webp" alt="The News" />
+      <Icon src={theNewsLogo} alt="The News" />
       <FlexBox>
         <LoginDiv>
           <TimeInfo> <ClockIcon />sempre às 06:06 manhã</TimeInfo>
