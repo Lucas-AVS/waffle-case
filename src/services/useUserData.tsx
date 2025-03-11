@@ -3,6 +3,7 @@ import { supabase } from "./supabaseClient";
 
 interface PostData {
   post_id: string;
+  opened_at: string;
   utm_source: string | null;
   utm_medium: string | null;
   utm_campaign: string | null;
@@ -26,7 +27,7 @@ const useUserData = (email: string) => {
     const fetchData = async () => {
       try {
         const { data, error } = await supabase
-          .rpc('get_user_data', { user_email: email });
+          .rpc('get_user_data', { p_user_email: email });
 
         if (error) throw error;
 
@@ -40,10 +41,11 @@ const useUserData = (email: string) => {
             last_opened_post: data[0].last_opened_post,
             posts: data[0].post_ids.map((post_id: string, index: number) => ({
               post_id,
-              utm_source: data[0].utm_sources[index],
-              utm_medium: data[0].utm_mediums[index],
-              utm_campaign: data[0].utm_campaigns[index],
-              utm_channel: data[0].utm_channels[index],
+              opened_at: data[0].opened_ats[index], // Mapeia opened_at
+              utm_source: data[0].utm_sources[index] || null,
+              utm_medium: data[0].utm_mediums[index] || null,
+              utm_campaign: data[0].utm_campaigns[index] || null,
+              utm_channel: data[0].utm_channels[index] || null,
             })),
           };
           setData(userData);
@@ -58,7 +60,7 @@ const useUserData = (email: string) => {
         }
       } finally {
         setLoading(false);
-      }
+      } 
     };
 
     fetchData();
