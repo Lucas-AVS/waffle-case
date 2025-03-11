@@ -15,6 +15,20 @@ import {
   FooterMessage,
 } from './style';
 
+
+const getWeekPosts = (posts: Array<{ post_id: string; opened_at: string }>) => {
+  const today = new Date();
+  const startOfWeek = new Date(today);
+  startOfWeek.setDate(today.getDate() - today.getDay());
+
+  const weekPosts = posts.filter((post) => {
+    const postDate = new Date(post.opened_at); // Converte a data do post para um objeto Date
+    return postDate >= startOfWeek && postDate <= today; // Retorna true se o post foi aberto nesta semana
+  });
+
+  return weekPosts.map((post) => post.post_id);
+};
+
 const getMedalType = (streak: number) => {
   if (streak > 12) return '🏅 Medalha de ouro';
   if (streak > 6) return '🥈 Medalha de prata';
@@ -34,6 +48,15 @@ const UserDashboard = () => {
     return new Date(dateString).toLocaleDateString('pt-BR', options);
   };
 
+  const hoursAgo = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diff = now.getTime() - date.getTime();
+    const hours = Math.floor(diff / 1000 / 60 / 60);
+    return `${hours} horas atrás`;
+
+  }
+
   const getUserName = (email: string) => {
     return email.split('@')[0];
   };
@@ -44,6 +67,9 @@ const UserDashboard = () => {
     }
     return 'Bronze na mão, mas conhecimento no coração! 💡🔥 Acompanhe nossa newsletter e veja sua medalha evoluir! 🥉➡️🥇';
   };
+
+  const weekPosts = data ? getWeekPosts(data.posts) : [];
+  console.log(data)
 
   return (
     <DashboardContainer>
@@ -71,18 +97,18 @@ const UserDashboard = () => {
                 <h2>Aberturas Seguidas</h2>
                 <p>Streak: {data.streak}</p>
                 <p>Última Abertura: {formatDate(data.last_opened_at)}</p>
+                <p>{hoursAgo(data.last_opened_at)} </p>
               </InfoCard>
 
               <InfoCard>
                 <h2>Post</h2>
                 <p>Último Post Aberto: {data.last_opened_post}</p>
-                <p>Posts Abertos Esta Semana: 
-                  {data.posts.map((post) => (
-                    <li key={post.post_id}>
-                      Post ID: {post.post_id}
-                    </li>
+                <p>Posts Abertos Esta Semana:</p>
+                <ul>
+                  {weekPosts.map((postId) => (
+                  <li key={postId}>Post ID: {postId}</li>
                   ))}
-                  </p>
+                </ul>    
               </InfoCard>
 
               <InfoCard>
