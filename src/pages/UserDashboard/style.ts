@@ -7,7 +7,7 @@ export const DashboardContainer = styled.div`
   justify-content: space-between;
   height: 100%;
   background-color: ${(props) => props.theme['cinza-300']};
-  padding: 2rem;
+  /* padding: 2rem; */
 
   @media (max-width: 768px) {
     padding: 1rem 0.5rem;
@@ -15,12 +15,13 @@ export const DashboardContainer = styled.div`
 `;
 
 export const DashboardHeader = styled.div`
-  width: 100%;
+  width: 96%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
+  margin-top: 10px;
   margin-bottom: 4rem;
   background-color: ${(props) => props.theme['branco']};
   border-bottom: 4px solid ${(props) => props.theme['amarelo']};
@@ -39,6 +40,7 @@ export const DashboardTitle = styled.h1`
 `;
 
 export const DashboardContent = styled.div`
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -107,9 +109,9 @@ export const Footer = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme['branco']};
   padding: 3rem;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  align-items: center;
+  flex-direction: column;   
+
   color: white;
   text-align: center;
 
